@@ -13,9 +13,9 @@ git clone https://github.com/ArjunManoj006/NEXTHOME-Beach-Resort.git
 cd NEXTHOME-Beach-Resort
 ### **2️ Install Dependencies**  
 Run the following command to install required Node.js packages:  
--**npm install**
--**npm install bcrypt**
--**npm install express-session**
+- **npm install**
+- **npm install bcrypt**
+- **npm install express-session**
 ### **5️ Start the Server**  
 Run the following command to start the backend server:  
 
