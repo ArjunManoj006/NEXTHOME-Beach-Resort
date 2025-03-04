@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>NEXTHOME™ - Book Rooms</title>
+    <link rel="stylesheet" href="/page2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar background">
+        <div class="logo">
+            <img src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=" style="width:60px;" alt="Logo">
+            <div id="user-info" style="display: inline-block; margin-left: 10px; color: white;"></div>
+        </div>
+        <ul class="nav-list">
+            <li><a href="page1.html">HOME</a></li>
+            <li><a href="page3.html">SERVICES</a></li>
+            <li><a href="page2.html">ROOMS</a></li>
+            <li><a href="page4.html">GALLERY</a></li>
+        </ul>
+        <div class="rightnav">
+            <h3> 15% off all services for Elite members! </h3>
+        </div>
+    </nav>
+
+    <!-- Single Rooms -->
+    <section class="single-room-section section">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="web" style="font-family: 'Poppins', sans-serif;">SINGLE ROOMS</h1>
+                <p class="text-small">
+                    All alone by yourselves? Don't worry! NEXTHOME™ presents to you our single rooms.
+                    Have a stay in our cozy, quiet living space for you and you only! Sometimes having a getaway from 
+                    your workplace or home is often important, and we have got you covered for sure. Don't be alone,
+                    enjoy your stay with NEXTHOME™ today itself! <br>
+                </p>
+                <a href="page5.html">
+                    <button class="btn">Contact Us</button>
+                </a>
+            </div>
+            <div class="room-image">
+                <img src="/single.jpg" alt="Single Room">
+            </div>
+        </div>
+    </section>
+
+    <!-- Couple Rooms -->
+    <section class="couple-room-section section">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="program" style="font-family: 'Poppins', sans-serif;">COUPLE ROOMS</h1>
+                <p class="text-small">
+                    Looking for a cozy getaway with your loved one? NEXTHOME™ has got you covered!
+                    Introducing you our couple rooms, set up with a romantic ambience like no other! We make
+                    sure to provide you both with a comfy private night where you can cherish your happy moments
+                    together. Enjoy your romantic evening with NEXTHOME™ today itself! <br>
+                </p>
+                <a href="page5.html">
+                    <button class="btn">Contact Us</button>
+                </a>
+            </div>
+            <div class="room-image">
+                <img src="/couple.jpeg" alt="Couple Room">
+            </div>
+        </div>
+    </section>
+
+    <!-- Family/Friends Rooms -->
+    <section class="family-room-section section">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" style="font-family: 'Poppins', sans-serif;">FAMILY/FRIENDS ROOMS</h1>
+                <p class="text-small">
+                    Planning your next weekend with your family or friends? NEXTHOME™ has got you covered!
+                    Our spacious family rooms will make sure that you and your loved ones or friends will have the stay 
+                    of your lives, complete with 2-3 queen sized beds (Rs.1500 extra for 3-bedroom). Make your vacation
+                    memorable with our family rooms on NEXTHOME™ today! <br>
+                </p>
+                <a href="page5.html">
+                    <button class="btn">Contact Us</button>
+                </a>
+            </div>
+            <div class="room-image">
+                <img src="/family.jpg" alt="Family Room">
+            </div>
+        </div>
+    </section>
+
+    <!-- Penthouse Suite -->
+    <section class="penthouse-section section">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" style="font-family: 'Poppins', sans-serif;">PENTHOUSE SUITE</h1>
+                <p class="text-small">
+                    If luxury is what you truly desire for at NEXTHOME™, we only have the best to offer. Our signature 
+                    penthouse suite is complete with a luxurious living space with the largest beds, massive home-theatre, 
+                    premium furniture and a huge jacuzzi among others! And not to forget, a million-dollar view of the ocean 
+                    right in front of you! Book our penthouse suite today! <br>
+                </p>
+                <a href="page5.html">
+                    <button class="btn">Contact Us</button>
+                </a>
+            </div>
+            <div class="room-image">
+                <img src="/penthouse.jpg" alt="Penthouse Suite">
+            </div>
+        </div>
+    </section>
+
+    <footer class="background">
+        <p class="text-footer">
+            Copyright © NEXTHOME™    Arjun Manoj-2443007 <br>
+            Contact us: arjunmanoj.006@gmail.com <br>
+        <a href="page6.html" style="color: #ffbb33;"> Privacy Policy | Terms & Conditions</a>
+        </p>
+    </footer>
+
+    <script>
+        // Fetch the logged-in user's data
+        fetch('/api/user')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    // Not logged in, redirect to login page
+                    window.location.href = 'Login.html';
+                } else {
+                    // Display the username next to the logo
+                    const userInfo = document.getElementById('user-info');
+                    userInfo.innerHTML = `Welcome, ${data.username}! <button onclick="logout()" style="margin-left: 10px; padding: 5px 10px; background-color: #ffbb33; border: none; border-radius: 5px; color: white; cursor: pointer;">Log Out</button>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user:', error);
+                window.location.href = 'Login.html';
+            });
+
+        // Logout function
+        async function logout() {
+            try {
+                await fetch('/api/logout');
+                window.location.href = 'Login.html';
+            } catch (error) {
+                console.error('Error logging out:', error);
+                window.location.href = 'Login.html';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXTHOME™ - Services</title>
+    <link rel="stylesheet" href="/page3.css"> <!-- Use absolute path, corrected to page3.css -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar background">
+        <div class="logo">
+            <img src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=" style="width:60px;" alt="Logo">
+            <div id="user-info" style="display: inline-block; margin-left: 10px; color: white;"></div> <!-- Add this for username display -->
+        </div>
+        <ul class="nav-list">
+            <li><a href="page1.html">HOME</a></li>
+            <li><a href="page3.html" class="active">SERVICES</a></li>
+            <li><a href="page2.html">ROOMS</a></li>
+            <li><a href="page4.html">GALLERY</a></li>
+        </ul>
+        <div class="rightnav">
+            <h3> 15% off all services for Elite members! </h3>
+        </div>
+    </nav>
+
+    <section class="single-room-section section">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="web" style="font-family:'Poppins', sans-serif;">FOOD & DRINK</h1>
+                <p class="text-small">
+                    Endulge yourself with our succulent continental cuisine at NEXTHOME™, prepared 
+                    by our Michelin-star chefs using only the freshest ingredients sourced from all
+                    around India. Our signature dishes include Spaghetti al Pomodoro, Ribeye steak, 
+                    Pommes frites and more! Note: We also serve imported alcoholic beverages. <br>
+                </p>
+            </div>
+            <div class="room-image">
+                <img src="/eat.jpg" alt="Food and Drink"> <!-- Use absolute path for image -->
+            </div>
+        </div>
+    </section>
+
+    <section class="couple-room-section section">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="program" style="font-family:'Poppins', sans-serif;">SPA & WELLNESS</h1>
+                <p class="text-small">
+                    NEXTHOME™ offers guests with premium, comforting and therapeutic spa sessions
+                    for you and your loved ones. Whether you're here for a weekend getaway or a long 
+                    vacation, our spa sessions will ensure that your comfort and relaxation comes first. 
+                    Other wellness programs are also included during the course of your stay here. <br>
+                </p>
+            </div>
+            <div class="room-image">
+                <img src="/spa.jpg" alt="Spa and Wellness"> <!-- Use absolute path for image -->
+            </div>
+        </div>
+    </section>
+
+    <section class="family-room-section section">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" style="font-family:'Poppins', sans-serif;">RESORT EVENTS</h1>
+                <p class="text-small">
+                    Apart from your private time here at NEXTHOME™, we also provide guests with special  
+                    resort events and functions everyday during the course of your stay. Lose yourself in 
+                    a mesmerizing ballet dance, energetic DJ nights, outdoor Barbeque cookouts, pool parties, 
+                    and a lot of fun along with other members of the NEXTHOME™ family! Our gigantic banquet hall 
+                    and auditorium is a perfect place for these nights. <br>
+                </p>
+            </div>
+            <div class="room-image">
+                <img src="/events.jpg" alt="Resort Events"> <!-- Use absolute path for image -->
+            </div>
+        </div>
+    </section>
+
+    <section class="penthouse-section section">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" style="font-family:'Poppins', sans-serif;">TAXI & VALET SERVICES</h1>
+                <p class="text-small">
+                    In order to ensure that our guests at NEXTHOME™ have a perfect time, we have organized
+                    taxi and valet services in our resorts. Our staff will help you move around town and 
+                    pick you up once you're done exploring. Meanwhile out valet staff ensures that your vehicle
+                    remains parked safely in our garages throughout your stay here at NEXTHOME™. 
+                    Note: We also offer chaffeures for your personal vehicles.<br>
+                </p>
+            </div>
+            <div class="room-image">
+                <img src="/taxi.jpeg" alt="Taxi and Valet Services"> <!-- Use absolute path for image -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="background">
+        <p class="text-footer">
+            Copyright © NEXTHOME™    Arjun Manoj-2443007 <br>
+            Contact us: arjunmanoj.006@gmail.com <br>
+        <a href="page6.html" style="color: #ffbb33;"> Privacy Policy | Terms & Conditions</a>
+        </p>
+    </footer>
+
+    <script>
+        // Fetch the logged-in user's data
+        fetch('/api/user')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    // Not logged in, redirect to login page
+                    window.location.href = 'Login.html';
+                } else {
+                    // Display the username next to the logo
+                    const userInfo = document.getElementById('user-info');
+                    userInfo.innerHTML = `Welcome, ${data.username}! <button onclick="logout()" style="margin-left: 10px; padding: 5px 10px; background-color: #ffbb33; border: none; border-radius: 5px; color: white; cursor: pointer;">Log Out</button>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user:', error);
+                window.location.href = 'Login.html';
+            });
+
+        // Logout function
+        async function logout() {
+            try {
+                await fetch('/api/logout');
+                window.location.href = 'Login.html';
+            } catch (error) {
+                console.error('Error logging out:', error);
+                window.location.href = 'Login.html';
+            }
+        }
+    </script>
+</body>
+</html>

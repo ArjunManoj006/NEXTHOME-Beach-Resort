@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - NEXTHOME™</title>
+    <link rel="stylesheet" href="/page5.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Piazzolla:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar background">
+        <div class="logo">
+            <img src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=" style="width:60px;" alt="Logo">
+            <div id="user-info" style="display: inline-block; margin-left: 10px; color: white;"></div>
+        </div>
+        <ul class="nav-list">
+            <li><a href="page1.html">HOME</a></li>
+            <li><a href="page3.html">SERVICES</a></li>
+            <li><a href="page2.html">ROOMS</a></li>
+            <li><a href="page4.html">GALLERY</a></li>
+        </ul>
+        <div class="rightnav">
+            <h3> 15% off all services for Elite members! </h3>
+        </div>
+    </nav>
+
+    <section class="contact-section section">
+        <div class="box-main">
+            <h1 class="text-big" style="font-family: 'Comic Sans MS', cursive; color: #ffbb33;">NEXTHOME™</h1>
+            <h2>Contact Us</h2>
+            <p class="text-small">
+                Get in touch with us to book your stay or inquire about our services. Fill out the form below, and we’ll reach out to you soon!
+            </p>
+            <form id="contact-form" action="/submit-contact" method="POST">
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" pattern="[A-Za-z\s]+" title="First name must contain only alphabets and spaces" required>
+                    <span id="firstNameError" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="second-name">Second Name</label>
+                    <input type="text" id="second-name" name="second-name" placeholder="Enter your second name" pattern="[A-Za-z\s]+" title="Second name must contain only alphabets and spaces" required>
+                    <span id="secondNameError" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" disabled selected>Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.com$" title="Email must be in the format user@domain.com" required>
+                    <span id="emailError" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <div class="phone-input">
+                        <select id="country-code" name="country-code" required>
+                            <option value="" disabled selected>Country Code</option>
+                            <option value="+54">+54 (Argentina)</option>
+                            <option value="+61">+61 (Australia)</option>
+                            <option value="+880">+32 (Belgium)</option>
+                            <option value="+55">+55 (Brazil)</option>
+                            <option value="+1">+1 (Canada)</option>
+                            <option value="+86">+86 (China)</option>
+                            <option value="+57">+45 (Denmark)</option>
+                            <option value="+20">+20 (Egypt)</option>
+                            <option value="+33">+33 (France)</option>
+                            <option value="+49">+49 (Germany)</option>
+                            <option value="+91">+91 (India)</option>
+                            <option value="+62">+62 (Indonesia)</option>
+                            <option value="+98">+98 (Iran)</option>
+                            <option value="+39">+39 (Italy)</option>
+                            <option value="+81">+81 (Japan)</option>
+                            <option value="+254">+254 (Kenya)</option>
+                            <option value="+60">+60 (Malaysia)</option>
+                            <option value="+52">+52 (Mexico)</option>
+                            <option value="+234">+234 (Nigeria)</option>
+                            <option value="+92">+31 (Netherlands)</option>
+                            <option value="+63">+63 (Philippines)</option>
+                            <option value="+7">+7 (Russia)</option>
+                            <option value="+966">+966 (Saudi Arabia)</option>
+                            <option value="+65">+65 (Singapore)</option>
+                            <option value="+27">+27 (South Africa)</option>
+                            <option value="+82">+82 (South Korea)</option>
+                            <option value="+34">+34 (Spain)</option>
+                            <option value="+66">+66 (Thailand)</option>
+                            <option value="+90">+90 (Turkey)</option>
+                            <option value="+44">+44 (UK)</option>
+                            <option value="+1">+1 (USA)</option>
+                            <option value="+84">+84 (Vietnam)</option>
+                        </select>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="\d{10}" title="Phone number must be exactly 10 digits" required>
+                    </div>
+                    <span id="phoneError" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="membership">Membership Type</label>
+                    <select id="membership" name="membership" required>
+                        <option value="" disabled selected>Select membership type</option>
+                        <option value="standard">Standard</option>
+                        <option value="elite">Elite</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+                <span id="successMessage" class="success-message"></span>
+            </form>
+        </div>
+    </section>
+
+    <footer class="background">
+        <p class="text-footer">
+            Copyright © NEXTHOME™   Arjun Manoj-2443007 <br>
+            Contact us: arjunmanoj.006@gmail.com <br>
+            <a href="privacy-terms.html" style="color: #ffbb33;">Privacy Policy & Terms and Conditions</a>
+        </p>
+    </footer>
+
+    <script>
+        // Fetch the logged-in user's data
+        fetch('/api/user')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    // Not logged in, redirect to login page
+                    window.location.href = 'Login.html';
+                } else {
+                    // Display the username next to the logo
+                    const userInfo = document.getElementById('user-info');
+                    userInfo.innerHTML = `Welcome, ${data.username}! <button onclick="logout()" style="margin-left: 10px; padding: 5px 10px; background-color: #ffbb33; border: none; border-radius: 5px; color: white; cursor: pointer;">Log Out</button>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user:', error);
+                window.location.href = 'Login.html';
+            });
+
+        // Logout function
+        async function logout() {
+            try {
+                await fetch('/api/logout');
+                window.location.href = 'Login.html';
+            } catch (error) {
+                console.error('Error logging out:', error);
+                window.location.href = 'Login.html';
+            }
+        }
+
+        // Function to toggle error message visibility and spacing
+        function updateErrorMessage(errorElement, message) {
+            errorElement.textContent = message;
+            if (message) {
+                errorElement.classList.add('visible');
+            } else {
+                errorElement.classList.remove('visible');
+            }
+        }
+
+        // Function to toggle success message visibility
+        function updateSuccessMessage(successElement, message) {
+            successElement.textContent = message;
+            if (message) {
+                successElement.classList.add('visible');
+            } else {
+                successElement.classList.remove('visible');
+            }
+        }
+
+        // Real-time validation for First Name
+        document.getElementById('first-name').addEventListener('input', function() {
+            const firstName = this.value.trim();
+            const firstNameError = document.getElementById('firstNameError');
+            updateErrorMessage(firstNameError, '');
+            const nameRegex = /^[A-Za-z\s]+$/;
+            if (firstName && !nameRegex.test(firstName)) {
+                updateErrorMessage(firstNameError, 'First name must contain only alphabets and spaces.');
+            }
+        });
+
+        // Real-time validation for Second Name
+        document.getElementById('second-name').addEventListener('input', function() {
+            const secondName = this.value.trim();
+            const secondNameError = document.getElementById('secondNameError');
+            updateErrorMessage(secondNameError, '');
+            const nameRegex = /^[A-Za-z\s]+$/;
+            if (secondName && !nameRegex.test(secondName)) {
+                updateErrorMessage(secondNameError, 'Second name must contain only alphabets and spaces.');
+            }
+        });
+
+        // Real-time validation for Email
+        document.getElementById('email').addEventListener('input', function() {
+            const email = this.value.trim();
+            const emailError = document.getElementById('emailError');
+            updateErrorMessage(emailError, '');
+            const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.com$/;
+            if (email && !emailRegex.test(email)) {
+                updateErrorMessage(emailError, 'Please enter a valid email address ending with .com (e.g., user@domain.com).');
+            }
+        });
+
+        // Real-time validation for Phone Number
+        document.getElementById('phone').addEventListener('input', function() {
+            const phone = this.value.trim();
+            const phoneError = document.getElementById('phoneError');
+            updateErrorMessage(phoneError, '');
+            const phoneRegex = /^\d{10}$/;
+            if (phone && !phoneRegex.test(phone)) {
+                updateErrorMessage(phoneError, 'Phone number must be exactly 10 digits with no alphabets, symbols, or spaces.');
+            }
+        });
+
+        // Form submission handler
+        document.getElementById('contact-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const firstName = document.getElementById('first-name').value.trim();
+            const firstNameError = document.getElementById('firstNameError');
+            const secondName = document.getElementById('second-name').value.trim();
+            const secondNameError = document.getElementById('secondNameError');
+            const email = document.getElementById('email').value.trim();
+            const emailError = document.getElementById('emailError');
+            const phone = document.getElementById('phone').value.trim();
+            const phoneError = document.getElementById('phoneError');
+            const successMessage = document.getElementById('successMessage');
+
+            // Reset error and success messages
+            updateErrorMessage(firstNameError, '');
+            updateErrorMessage(secondNameError, '');
+            updateErrorMessage(emailError, '');
+            updateErrorMessage(phoneError, '');
+            updateSuccessMessage(successMessage, '');
+
+            // Validate all fields and collect errors
+            let hasError = false;
+
+            // First Name and Second Name: Alphabets only (including spaces)
+            const nameRegex = /^[A-Za-z\s]+$/;
+            if (!nameRegex.test(firstName)) {
+                updateErrorMessage(firstNameError, 'First name must contain only alphabets and spaces.');
+                hasError = true;
+            }
+            if (!nameRegex.test(secondName)) {
+                updateErrorMessage(secondNameError, 'Second name must contain only alphabets and spaces.');
+                hasError = true;
+            }
+
+            // Email: Must be in the format user@domain.com
+            const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.com$/;
+            if (!emailRegex.test(email)) {
+                updateErrorMessage(emailError, 'Please enter a valid email address ending with .com (e.g., user@domain.com).');
+                hasError = true;
+            }
+
+            // Phone Number: Exactly 10 digits, no alphabets or symbols
+            const phoneRegex = /^\d{10}$/;
+            if (!phoneRegex.test(phone)) {
+                updateErrorMessage(phoneError, 'Phone number must be exactly 10 digits with no alphabets, symbols, or spaces.');
+                hasError = true;
+            }
+
+            // If there are validation errors, stop here
+            if (hasError) return;
+
+            // Display the success message immediately after passing client-side validation
+            updateSuccessMessage(successMessage, 'Thanks for choosing NEXTHOME™, we will reach out to you shortly.');
+            event.target.reset();
+
+            // Still attempt to send the form data to the server (for logging/debugging purposes)
+            const formData = new FormData(event.target);
+            try {
+                console.log('Submitting form to /submit-contact...');
+                const response = await fetch('/submit-contact', {
+                    method: 'POST',
+                    body: formData
+                });
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+
+                const result = await response.json();
+                console.log('Response body:', result);
+
+                if (!response.ok) {
+                    console.error('Server responded with an error:', result);
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

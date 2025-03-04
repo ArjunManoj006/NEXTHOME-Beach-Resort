@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXTHOME™ - Image Gallery</title>
+    <link rel="stylesheet" href="/page4.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar background">
+        <div class="logo">
+            <img src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=" style="width:60px;" alt="Logo">
+            <div id="user-info" style="display: inline-block; margin-left: 10px; color: white;"></div>
+        </div>
+        <ul class="nav-list">
+            <li><a href="page1.html">HOME</a></li>
+            <li><a href="page3.html">SERVICES</a></li>
+            <li><a href="page2.html">ROOMS</a></li>
+            <li><a href="page4.html" class="active">GALLERY</a></li>
+        </ul>
+        <div class="rightnav">
+            <h3> 15% off all services for Elite members! </h3>
+        </div>
+    </nav>
+
+    <section class="gallery-section section">
+        <div class="gallery-content">
+            <h1 class="text-big" id="gallery-title" style="font-family:'Poppins', sans-serif;">RESORT IMAGE GALLERY</h1>
+            <p class="text-small">
+                Explore the beauty of NEXTHOME™ through our curated image gallery. From stunning ocean views to luxurious interiors, get a glimpse of what awaits you at our resort.
+            </p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="ocean.jpg" alt="Ocean View">
+                    <p class="gallery-caption">Stunning Ocean View</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="penthouse.jpg" alt="Luxury Suite">
+                    <p class="gallery-caption">Penthouse Suite Interior</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="beach.jpeg" alt="Poolside">
+                    <p class="gallery-caption">Resort Pool</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="dining.jpg" alt="Dining Area">
+                    <p class="gallery-caption">Outdoor Dining Area</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="spa.jpg" alt="Spa Room">
+                    <p class="gallery-caption">Spa and Wellness</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="bbq.jpg" alt="Resort Event">
+                    <p class="gallery-caption">Resort Event - BBQ Night</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="sunset.jpg" alt="Beach Sunset">
+                    <p class="gallery-caption">Beach Sunset</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="resort.jpg" alt="Resort Exterior">
+                    <p class="gallery-caption">Resort Exterior</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="garden.jpg" alt="Garden Area">
+                    <p class="gallery-caption">Garden Area</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="lounge.jpg" alt="Lounge">
+                    <p class="gallery-caption">Luxury Lounge</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="events.jpg" alt="Event Hall">
+                    <p class="gallery-caption">Event Hall</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="yoga.png" alt="Sunrise Yoga">
+                    <p class="gallery-caption">Sunrise Yoga Session</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="background">
+        <p class="text-footer">
+            Copyright © NEXTHOME™    Arjun Manoj-2443007 <br>
+            Contact us: arjunmanoj.006@gmail.com <br>
+        <a href="page6.html" style="color: #ffbb33;"> Privacy Policy | Terms & Conditions</a>
+        </p>
+    </footer>
+
+    <script>
+        // Fetch the logged-in user's data
+        fetch('/api/user')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    // Not logged in, redirect to login page
+                    window.location.href = 'Login.html';
+                } else {
+                    // Display the username next to the logo
+                    const userInfo = document.getElementById('user-info');
+                    userInfo.innerHTML = `Welcome, ${data.username}! <button onclick="logout()" style="margin-left: 10px; padding: 5px 10px; background-color: #ffbb33; border: none; border-radius: 5px; color: white; cursor: pointer;">Log Out</button>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user:', error);
+                window.location.href = 'Login.html';
+            });
+
+        // Logout function
+        async function logout() {
+            try {
+                await fetch('/api/logout');
+                window.location.href = 'Login.html';
+            } catch (error) {
+                console.error('Error logging out:', error);
+                window.location.href = 'Login.html';
+            }
+        }
+    </script>
+</body>
+</html>

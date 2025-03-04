@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextHome Login</title>
+    <link rel="stylesheet" href="Login.css">
+    <!-- Font Awesome for eye icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="main">
+        <h1>NEXTHOME™</h1>
+        <h3>Enter your login credentials</h3>
+
+        <form id="loginForm">
+            <label for="email">
+                Email:
+            </label>
+            <input type="email" id="email" name="email"
+                placeholder="Enter your Email" required>
+            <span id="emailError" class="error-message"></span>
+
+            <label for="password">
+                Password:
+            </label>
+            <div class="password-container">
+                <input type="password" id="password" name="password"
+                    placeholder="Enter your Password" required>
+                <span class="eye-icon" onclick="togglePassword('password')">
+                    <i class="fas fa-eye"></i>
+                </span>
+            </div>
+            <span id="passwordError" class="error-message"></span>
+
+            <div class="wrap">
+                <button type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+
+        <p>Don't have an account?
+            <a href="Register.html" style="color: #ffbb33;">
+                Click here to register!
+            </a>
+        </p>
+    </div>
+
+    <script>
+        // Password toggle functionality
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.querySelector('i');
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = "password";
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Function to toggle error message visibility and spacing
+        function updateErrorMessage(errorElement, message) {
+            errorElement.textContent = message;
+            if (message) {
+                errorElement.classList.add('visible');
+            } else {
+                errorElement.classList.remove('visible');
+            }
+        }
+
+        // Form validation and login
+        document.getElementById('loginForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+            const password = document.getElementById('password').value;
+            const passwordError = document.getElementById('passwordError');
+
+            // Reset error messages
+            updateErrorMessage(emailError, '');
+            updateErrorMessage(passwordError, '');
+
+            // Validate Email
+            const validEmailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.com$/;
+            if (!validEmailFormat.test(email)) {
+                updateErrorMessage(emailError, 'Email must be in the format: username@domain.com (e.g., user@gmail.com).');
+                return;
+            }
+
+            // Validate Password
+            const validPasswordFormat = /^[a-zA-Z0-9@#$%^&*!_\-+=]+$/;
+            if (!validPasswordFormat.test(password)) {
+                updateErrorMessage(passwordError, 'Password can only contain letters, numbers, and common symbols (@#$%^&*!_-+=).');
+                return;
+            }
+
+            if (password.length < 8 || password.length > 20) {
+                updateErrorMessage(passwordError, 'Password must be between 8 and 20 characters.');
+                return;
+            }
+
+            try {
+                // Send login request to the backend API
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    // Handle errors from the backend
+                    if (result.error === 'Invalid email or password') {
+                        updateErrorMessage(passwordError, result.error);
+                    } else {
+                        updateErrorMessage(passwordError, result.error || 'Login failed');
+                    }
+                    return;
+                }
+
+                // Login successful, redirect to page1.html
+                window.location.href = 'page1.html';
+            } catch (error) {
+                console.error('Error during login:', error);
+                updateErrorMessage(passwordError, 'Error logging in: ' + error.message);
+            }
+        });
+
+        // Real-time validation for email
+        document.getElementById('email').addEventListener('input', function() {
+            const email = this.value;
+            const emailError = document.getElementById('emailError');
+
+            updateErrorMessage(emailError, '');
+
+            const validEmailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.com$/;
+            if (email && !validEmailFormat.test(email)) {
+                updateErrorMessage(emailError, 'Email must be in the format: username@domain.com (e.g., user@gmail.com).');
+            }
+        });
+
+        // Real-time validation for password
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const passwordError = document.getElementById('passwordError');
+
+            updateErrorMessage(passwordError, '');
+
+            const validPasswordFormat = /^[a-zA-Z0-9@#$%^&*!_\-+=]+$/;
+            if (!validPasswordFormat.test(password)) {
+                updateErrorMessage(passwordError, 'Password can only contain letters, numbers, and common symbols (@#$%^&*!_-+=).');
+                return;
+            }
+
+            if (password && (password.length < 8 || password.length > 20)) {
+                updateErrorMessage(passwordError, 'Password must be between 8 and 20 characters.');
+            }
+        });
+    </script>
+</body>
+</html>

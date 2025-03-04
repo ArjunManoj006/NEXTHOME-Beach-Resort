@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXTHOME™ - Luxury Beach Resort</title>
+    <link rel="stylesheet" href="/page1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar background">
+        <div class="logo">
+            <img src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=" style="width:60px;" alt="Logo">
+            <div id="user-info" style="display: inline-block; margin-left: 10px; color: white;"></div> <!-- Add this for username display -->
+        </div>
+        <ul class="nav-list">
+            <li><a href="page1.html">HOME</a></li>
+            <li><a href="page3.html">SERVICES</a></li>
+            <li><a href="page2.html">ROOMS</a></li>
+            <li><a href="page4.html">GALLERY</a></li>
+        </ul>
+        <div class="rightnav">
+            <h3> 15% off all services for Elite members!</h3>
+        </div>
+    </nav>
+
+    <section class="firstsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="web">ABOUT US</h1>
+                <p class="text-small">
+                    NEXTHOME™ is one of India's finest 5-star beach hotels, established by our esteemed founder Mr. Arjun Manoj in 2006. Your go-to destination for a luxurious weekend getaway with friends and family. Now expanded across Goa, Mumbai, Kochi, and Pondicherry, with more locations on the way. Book your stay today!
+                </p>
+                <a href="page2.html"> 
+                <button class="btn">Book Now</button>
+            </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="secondsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="program">SERVICES</h1>
+                <p class="text-small">
+                    Enjoy cozy rooms, refreshing meals by the sunset, an Olympic-sized pool, and impeccable room service from our well-trained staff. Special events like BBQ parties and candlelit dinners await you. Discover the best with NEXTHOME™!
+                </p>
+                <a href="page3.html"> 
+                <button class="btn">Explore Services</button>
+            </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="paras">
+            <h1 class="sectionTag text-big">HAVE FUN!</h1>
+            <p class="sectionSubTag text-small">
+                Register on our website for exclusive discounts. Note: Food, alcohol, special services, and taxi charges are separate. Follow our guidelines for the best experience. Enjoy your stay!
+            </p>
+            <a href="register.html">
+            <button class="btn">Register Now</button>
+        </a>
+        </div>
+    </section>
+
+    <footer class="background">
+        <p class="text-footer">
+            Copyright © NEXTHOME™    Arjun Manoj-2443007 <br>
+            Contact us: arjunmanoj.006@gmail.com <br>
+        <a href="page6.html" style="color: #ffbb33;"> Privacy Policy | Terms & Conditions</a>
+        </p>
+    </footer>
+
+    <script>
+        // Fetch the logged-in user's data
+        fetch('/api/user')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    // Not logged in, redirect to login page
+                    window.location.href = 'Login.html';
+                } else {
+                    // Display the username next to the logo
+                    const userInfo = document.getElementById('user-info');
+                    userInfo.innerHTML = `Welcome, ${data.username}! <button onclick="logout()" style="margin-left: 10px; padding: 5px 10px; background-color: #ffbb33; border: none; border-radius: 5px; color: white; cursor: pointer;">Log Out</button>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user:', error);
+                window.location.href = 'Login.html';
+            });
+
+        // Logout function
+        async function logout() {
+            try {
+                await fetch('/api/logout');
+                window.location.href = 'Login.html';
+            } catch (error) {
+                console.error('Error logging out:', error);
+                window.location.href = 'Login.html';
+            }
+        }
+    </script>
+</body>
+</html>
