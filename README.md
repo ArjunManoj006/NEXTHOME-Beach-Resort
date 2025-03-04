@@ -10,7 +10,7 @@
 ### **1️ Clone the Repository**  
 Open a terminal and run:  
 git clone https://github.com/ArjunManoj006/NEXTHOME-Beach-Resort.git
-cd VetVibes
+cd NEXTHOME-Beach-Resort
 ### **2️ Install Dependencies**  
 Run the following command to install required Node.js packages:  
 npm install
