@@ -16,13 +16,16 @@ Run the following command to install required Node.js packages:
 - **npm install**
 - **npm install bcrypt**
 - **npm install express-session**
-### **5️ Start the Server**  
+- **install all other main Node.js packages**
+### **3 Start the Server**  
 Run the following command to start the backend server:  
 
 node server.js
 
 Your server should now be running at **http://localhost:3001**  
-
+### **Please Note:**  
+- **Create an account through the register page and log in**
+- ** 
 ---
 ## **Frontend**  
 - The frontend is built with **HTML, CSS, and JavaScript**.  
