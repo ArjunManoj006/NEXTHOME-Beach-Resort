@@ -24,8 +24,10 @@ node server.js
 
 Your server should now be running at **http://localhost:3001**  
 ### **Please Note:**  
-- **Create an account through the register page and log in**
-- ** 
+- **Users can create an account through the register page and log in**
+- **User registration details will be stored in the users.json file**
+- **User details are only stored temporarily. They can be deleted via the users.json file**
+- **Due to constraints, users are not able to make payments for the rooms. However they can fill the 'contact us' page for now**
 ---
 ## **Frontend**  
 - The frontend is built with **HTML, CSS, and JavaScript**.  
